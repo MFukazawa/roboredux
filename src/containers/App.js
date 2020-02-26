@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { setSearchField, requestRobots } from "../actions";
+
 import CardList from "../components/CardList";
 import SearchBox from "../components/SearchBox";
 import Scroll from "../components/Scroll";
-import "./App.css";
 
-import { setSearchField, requestRobots } from "../actions";
+import "./App.css";
 
 const mapStateToProps = state => {
   return {
@@ -33,6 +34,7 @@ class App extends Component {
     const filteredRobots = robots.filter(robot => {
       return robot.name.toLowerCase().includes(searchField.toLowerCase());
     });
+    console.log(filteredRobots);
     return isPending ? (
       <h1>Loading</h1>
     ) : (
